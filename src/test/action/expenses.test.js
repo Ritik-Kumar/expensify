@@ -1,10 +1,19 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { startAddExpense, addExpense, editExpense, removeExpense } from '../../actions/expenses';
+import { startAddExpense, addExpense, editExpense, removeExpense, startSetExpenses, setExpenses } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
+import expenseReducer from '../../reducers/expenses';
 
 const createMockStore = configureMockStore([thunk]);
+
+beforeEach((done) => {
+  const expensesData = {};
+  expenses.forEach(({ id, description, createdAt, amount, note }) => {
+    expensesData[id] = { description, note, amount, createdAt };
+  });
+  database.ref('expenses').set(expensesData).then(() => { done(); });
+});
 
 test('shold set up remove expense action object', () => {
   const action = removeExpense({ id: '123abc' });
@@ -83,18 +92,35 @@ test('should add expense to database and store with given values', (done) => {
   });
 });
 
-// test('shold set up add expense action object with default value', () => {
-//   const data = {
-//   }
-//   const action = addExpense(data);
-//   expect(action).toStrictEqual({
-//     type: 'ADD_EXPENSE',
-//     expense: {
-//       id: expect.any(String),
-//       description: '',
-//       amount: 0,
-//       createdAt: 0,
-//       note: ''
-//     }
-//   })
-// });
+
+test('should setup set expenses action object with data', () => {
+  const action = setExpenses(expenses);
+  expect(action).toEqual({
+    type: 'SET_EXPENSES',
+    expenses
+  })
+});
+
+test('should set expenses', () => {
+  const action = {
+    type: 'SET_EXPENSES',
+    expenses: [expenses[1]]
+  }
+  const state = expenseReducer(expenses, action);
+  expect(state).toEqual([expenses[1]]);
+});
+
+
+
+test('shold fetch expense from firebase', (done) => {
+  const store = createMockStore();
+  store.dispatch(startSetExpenses()).then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: 'SET_EXPENSES',
+      expenses
+    });
+    done();
+  });
+
+});

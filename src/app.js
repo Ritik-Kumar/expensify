@@ -6,7 +6,7 @@ import AppRouter from './routers/AppRouter';
 
 //Store
 import configureStore from './store/configureStore';
-import { addExpense, editExpense, removeExpense } from './actions/expenses';
+import { startSetExpenses } from './actions/expenses';
 import { setTextFilter, setStartDate, setEndDate, sortByAmount, sortByDate } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
 
@@ -24,4 +24,11 @@ const store = configureStore();
 const jsx = (
   <Provider store={store}><AppRouter /></Provider>
 );
-ReactDOM.render(jsx, document.getElementById('app'));
+
+
+ReactDOM.render(<p>loading...</p>, document.getElementById('app'));
+
+store.dispatch(startSetExpenses()).then(() => {
+  ReactDOM.render(jsx, document.getElementById('app'));
+});
+
