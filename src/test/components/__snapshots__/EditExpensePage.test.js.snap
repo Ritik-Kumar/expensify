@@ -2,66 +2,120 @@
 
 exports[`should handel edit expense component correctly 1`] = `
 <div>
-  <ExpenseForm
-    expense={
-      Object {
-        "amount": 109500,
-        "createdAt": -345600000,
-        "description": "Rent",
-        "id": "2",
-        "note": "",
-      }
-    }
-    onSubmit={[Function]}
-  />
-  <button
-    onClick={[Function]}
+  <div
+    className="page-header"
   >
-    Remove
-  </button>
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Remove Expense
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <ExpenseForm
+      expense={
+        Object {
+          "amount": 109500,
+          "createdAt": -345600000,
+          "description": "Rent",
+          "id": "2",
+          "note": "",
+        }
+      }
+      onSubmit={[Function]}
+    />
+    <button
+      className="button button--secondary"
+      onClick={[Function]}
+    >
+      Remove Expense
+    </button>
+  </div>
 </div>
 `;
 
 exports[`should handel edit expense component correctly 2`] = `
 <div>
-  <ExpenseForm
-    expense={
-      Object {
-        "amount": 109500,
-        "createdAt": -345600000,
-        "description": "Rent",
-        "id": "2",
-        "note": "",
-      }
-    }
-    onSubmit={[Function]}
-  />
-  <button
-    onClick={[Function]}
+  <div
+    className="page-header"
   >
-    Remove
-  </button>
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Remove Expense
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <ExpenseForm
+      expense={
+        Object {
+          "amount": 109500,
+          "createdAt": -345600000,
+          "description": "Rent",
+          "id": "2",
+          "note": "",
+        }
+      }
+      onSubmit={[Function]}
+    />
+    <button
+      className="button button--secondary"
+      onClick={[Function]}
+    >
+      Remove Expense
+    </button>
+  </div>
 </div>
 `;
 
 exports[`should render edit expense component correctly 1`] = `
 <div>
-  <ExpenseForm
-    expense={
-      Object {
-        "amount": 109500,
-        "createdAt": -345600000,
-        "description": "Rent",
-        "id": "2",
-        "note": "",
-      }
-    }
-    onSubmit={[Function]}
-  />
-  <button
-    onClick={[Function]}
+  <div
+    className="page-header"
   >
-    Remove
-  </button>
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Remove Expense
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <ExpenseForm
+      expense={
+        Object {
+          "amount": 109500,
+          "createdAt": -345600000,
+          "description": "Rent",
+          "id": "2",
+          "note": "",
+        }
+      }
+      onSubmit={[Function]}
+    />
+    <button
+      className="button button--secondary"
+      onClick={[Function]}
+    >
+      Remove Expense
+    </button>
+  </div>
 </div>
 `;
